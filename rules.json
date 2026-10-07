@@ -1,7 +1,7 @@
 {
   "blocks" : {
     "reelDownloads" : [
-      "cdninstagram\\.com/.*efg=eyJ2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmNsaXBz"
+      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmNsaXBz"
     ]
   },
   "groups" : {
@@ -14,23 +14,28 @@
     "exploreGrid" : [
       "main[role=\"main\"] > nav + div"
     ],
+    "homeFeed" : [
+      "main[role=\"main\"] > div > div > div:has(> div > div > div > div > article)"
+    ],
     "reelsButton" : [
       "a[href=\"/reels/\"]",
       "div:has(> span > div > a[href=\"/reels/\"])"
     ],
     "reelsInFeed" : [
-      "article:has(a[href*=\"/reel\"])"
+      "article:has(a[href^=\"/reel/\"], a[href^=\"/reels/\"]:not([href^=\"/reels/audio/\"]), a[href*=\"/reel/\"]:not([href^=\"/explore/\"]))"
     ],
     "suggestedPosts" : [
-      "article:has(> div > div:nth-child(1) > div > div:nth-child(2) > div > div > div:nth-child(2) > div[role=\"button\"])"
+      "article:has(> div > div:nth-child(1) > div > div:nth-child(2) > div > div > div:nth-child(2) > div[role=\"button\"])",
+      "article:has(> div > div > div > div:nth-child(2) > div > div > div > div:not(:first-child) > span[dir=\"auto\"] > div > span)",
+      "article:has(> div > div > div > div:nth-child(2) > div > div > div > div:not(:first-child) > span[dir=\"auto\"] > div > div > div > span)"
     ]
   },
   "storyBlocks" : {
     "ads" : [
-      "cdninstagram\\.com/.*efg=eyJ2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmFk",
-      "cdninstagram\\.com/.*efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQUQu",
-      "cdninstagram\\.com/.*efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
+      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmFk",
+      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQUQu",
+      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
     ]
   },
-  "version" : 4
+  "version" : 6
 }
