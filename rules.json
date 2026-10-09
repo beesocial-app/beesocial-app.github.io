@@ -28,6 +28,9 @@
       "article:has(> div > div:nth-child(1) > div > div:nth-child(2) > div > div > div:nth-child(2) > div[role=\"button\"])",
       "article:has(> div > div > div > div:nth-child(2) > div > div > div > div:not(:first-child) > span[dir=\"auto\"] > div > span)",
       "article:has(> div > div > div > div:nth-child(2) > div > div > div > div:not(:first-child) > span[dir=\"auto\"] > div > div > div > span)"
+    ],
+    "suggestedReels": [
+      "div:has(> div[data-reel-type=\"reshared\"]) + div"
     ]
   },
   "storyBlocks": {
@@ -37,5 +40,5 @@
       "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
     ]
   },
-  "version": 7
+  "version": 8
 }
