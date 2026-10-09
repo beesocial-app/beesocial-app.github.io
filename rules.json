@@ -1,9 +1,4 @@
 {
-  "blocks": {
-    "reelDownloads": [
-      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmNsaXBz"
-    ]
-  },
   "groups": {
     "ads": [
       "article:has(a[href*=\"/ads/ig_redirect\"])"
@@ -21,9 +16,6 @@
       "a[href=\"/reels/\"]",
       "div:has(> span > div > a[href=\"/reels/\"])"
     ],
-    "reelsInFeed": [
-      "article:has(a[href^=\"/reel/\"], a[href^=\"/reels/\"]:not([href^=\"/reels/audio/\"]), a[href*=\"/reel/\"]:not([href^=\"/explore/\"]))"
-    ],
     "suggestedPosts": [
       "article:has(> div > div:nth-child(1) > div > div:nth-child(2) > div > div > div:nth-child(2) > div[role=\"button\"])",
       "article:has(> div > div > div > div:nth-child(2) > div > div > div > div:not(:first-child) > span[dir=\"auto\"] > div > span)",
@@ -40,5 +32,5 @@
       "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
     ]
   },
-  "version": 8
+  "version": 9
 }
