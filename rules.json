@@ -3,6 +3,10 @@
     "ads": [
       "article:has(a[href*=\"/ads/ig_redirect\"])"
     ],
+    "afterCaughtUp": [
+      "div:has(> div > div > div > img[src*=\"illo-confirm-refresh\"]) ~ article > *",
+      "div:has(> div > div > div > div > div > img[src*=\"illo-confirm-refresh\"]) + div"
+    ],
     "appBanner": [
       "section > div > div[data-visualcompletion=\"ignore\"]"
     ],
