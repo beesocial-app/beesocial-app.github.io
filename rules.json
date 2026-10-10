@@ -5,7 +5,8 @@
     ],
     "afterCaughtUp": [
       "div:has(> div > div > div > img[src*=\"illo-confirm-refresh\"]) ~ article > *",
-      "div:has(> div > div > div > div > div > img[src*=\"illo-confirm-refresh\"]) + div"
+      "div:has(> div > div > div > div > div > img[src*=\"illo-confirm-refresh\"]) + div",
+      "div:has(> div > div > div > div > div > img[src*=\"illo-confirm-refresh\"]) ~ img"
     ],
     "appBanner": [
       "section > div > div[data-visualcompletion=\"ignore\"]"
@@ -15,6 +16,9 @@
     ],
     "homeFeed": [
       "main[role=\"main\"] > div > div > div:has(> div > div > div > div > article)"
+    ],
+    "mediaHolders": [
+      "main[role=\"main\"] > div:not([class])"
     ],
     "photoMenu": [
       "div._aagu > div:not(._aagv)"
