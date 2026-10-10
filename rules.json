@@ -27,6 +27,9 @@
       "a[href=\"/reels/\"]",
       "div:has(> span > div > a[href=\"/reels/\"])"
     ],
+    "searchBar": [
+      "div:has(> div > section > main[role=\"main\"] > nav input[type=\"search\"]):has(> div > section > main[role=\"main\"] > nav a[href^=\"/\"]) > div:not(:has(section))"
+    ],
     "suggestedHeading": [
       "div:has(> div > div > img[src*=\"illo-confirm-refresh\"]) + div"
     ],
@@ -46,5 +49,5 @@
       "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
     ]
   },
-  "version": 10
+  "version": 11
 }
