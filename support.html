@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bee Social: Support</title>
+  <meta name="description" content="Share Bee Social, send feedback or report a problem.">
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <p><a href="./">← Bee Social</a></p>
+  <h1>Keep it <em>buzzing</em></h1>
+  <p>Bee Social is free. If it's made Instagram better for you, you'll soon be able to chip in to keep it running.</p>
+
+  <h2>Spread the <em>buzz</em></h2>
+  <p>If you know anyone who might like it, please do send them this website.</p>
+  <p><button class="button" id="share" type="button">Share Bee Social</button></p>
+
+  <h2>Tell us what you <em>think</em></h2>
+  <div class="card"><h3>In the beta</h3><p>Open the TestFlight app, tap Bee Social, then Send Beta Feedback. You can add a screenshot too, even one taken in Safari.</p></div>
+  <div class="card"><h3>Something not working?</h3><p>Report it on <a href="https://github.com/beesocial-app/beesocial-app.github.io/issues">GitHub</a>. Please don't include screenshots that show your friends' names or messages.</p></div>
+
+  <footer>Bee Social is not affiliated with Instagram or Meta. Instagram is a trademark of Meta Platforms, Inc.</footer>
+</main>
+<script>
+  // Opens the share sheet where there is one, otherwise copies the address.
+  document.getElementById("share").addEventListener("click", function () {
+    var url = "https://beesocial-app.github.io/", b = this;
+    if (navigator.share) { navigator.share({ title: "Bee Social", url: url }).catch(function () {}); return; }
+    navigator.clipboard.writeText(url).then(function () { b.textContent = "Link copied"; });
+  });
+</script>
+</body>
+</html>
