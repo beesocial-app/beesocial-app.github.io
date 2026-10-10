@@ -12,6 +12,9 @@
     "homeFeed": [
       "main[role=\"main\"] > div > div > div:has(> div > div > div > div > article)"
     ],
+    "photoMenu": [
+      "div._aagu > div:not(._aagv)"
+    ],
     "reelsButton": [
       "a[href=\"/reels/\"]",
       "div:has(> span > div > a[href=\"/reels/\"])"
@@ -32,5 +35,5 @@
       "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
     ]
   },
-  "version": 9
+  "version": 10
 }
