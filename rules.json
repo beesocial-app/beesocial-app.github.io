@@ -19,6 +19,9 @@
       "a[href=\"/reels/\"]",
       "div:has(> span > div > a[href=\"/reels/\"])"
     ],
+    "suggestedHeading": [
+      "div:has(> div > div > img[src*=\"illo-confirm-refresh\"]) + div"
+    ],
     "suggestedPosts": [
       "article:has(> div > div:nth-child(1) > div > div:nth-child(2) > div > div > div:nth-child(2) > div[role=\"button\"])",
       "article:has(> div > div > div > div:nth-child(2) > div > div > div > div:not(:first-child) > span[dir=\"auto\"] > div > span)",
