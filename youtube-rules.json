@@ -1,0 +1,52 @@
+{
+  "blocks" : {
+    "adVideos" : [
+      "googlevideo\\.com/videoplayback.*[?&]ctier=L",
+      "googlevideo\\.com/videoplayback/.*/ctier/L/"
+    ]
+  },
+  "groups" : {
+    "ads" : [
+      "ytm-companion-slot",
+      "ytm-promoted-sparkles-web-renderer",
+      "ytm-promoted-video-renderer",
+      "ytm-compact-promoted-video-renderer",
+      "ytm-compact-promoted-item-renderer",
+      "ytm-promoted-sparkles-text-search-renderer",
+      "ytm-ad-slot-renderer",
+      "ytm-in-feed-ad-layout-renderer",
+      "ytm-statement-banner-renderer",
+      "ytm-rich-item-renderer:has(badge-shape.ytBadgeShapeAd)",
+      "ytm-video-with-context-renderer:has(badge-shape.ytBadgeShapeAd)",
+      ".ytp-ad-overlay-container",
+      ".ytp-ad-overlay-slot",
+      "ytm-mealbar-promo-renderer"
+    ],
+    "shorts" : [
+      "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.pivot-shorts)",
+      "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.shorts)",
+      "ytm-reel-shelf-renderer",
+      "ytm-rich-section-renderer:has(ytm-shorts-lockup-view-model)",
+      "ytm-rich-section-renderer:has(ytm-reel-shelf-renderer)",
+      "grid-shelf-view-model:has(ytm-shorts-lockup-view-model)",
+      "ytm-shelf-renderer:has(ytm-shorts-lockup-view-model)",
+      "ytm-shorts-lockup-view-model",
+      "ytm-rich-item-renderer:has(a[href^=\"/shorts/\"])",
+      "ytm-video-with-context-renderer:has(a[href^=\"/shorts/\"])",
+      "yt-tab-shape[tab-title=\"Shorts\"]"
+    ],
+    "suggestions" : [
+      "ytm-rich-grid-renderer:has(> div > div.rich-grid-renderer-header > ytm-feed-filter-chip-bar-renderer) > div.rich-grid-renderer-contents",
+      "ytm-rich-grid-renderer > div > div.rich-grid-renderer-header > ytm-feed-filter-chip-bar-renderer",
+      "ytm-single-column-watch-next-results-renderer div.related-items-container",
+      "ytm-single-column-watch-next-results-renderer > ytm-item-section-renderer[section-identifier=\"related-items\"]",
+      "ytm-search ytm-shelf-renderer",
+      "ytm-search ytm-horizontal-card-list-renderer",
+      ".ytp-ce-element",
+      ".ytp-endscreen-content",
+      ".ytp-autonav-endscreen-countdown-overlay",
+      ".ytp-upnext"
+    ]
+  },
+  "version" : 1
+}
