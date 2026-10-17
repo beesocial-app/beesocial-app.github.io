@@ -1,4 +1,9 @@
 {
+  "blocks": {
+    "ads": [
+      "^https://[^/]*instagram\\.com/api/v[0-9]+/injected_story_units"
+    ]
+  },
   "groups": {
     "ads": [
       "article:has(a[href*=\"/ads/ig_redirect\"])"
@@ -44,10 +49,16 @@
   },
   "storyBlocks": {
     "ads": [
-      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmFk",
-      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQUQu",
-      "[?&]efg=eyJ2ZW5jb2RlX3RhZyI6IkFE"
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiaWcteHB2ZHMuYW[Q-T]",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzLmFk",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJpZy14cHZkcy5hZ[A-P]",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlLklOU1RBR1JBTS5BRC[4-7]",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS5JTlNUQUdSQU0uQUQu",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJ4cHZfcHJvZ3Jlc3NpdmUuSU5TVEFHUkFNLkFEL[g-v]",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiQU[Q-T]",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6IkFE",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJBR[A-P]"
     ]
   },
-  "version": 11
+  "version": 12
 }
