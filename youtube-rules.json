@@ -1,6 +1,10 @@
 {
   "blocks": {
-    "adVideos": []
+    "adVideos": [
+      "googlevideo\\.com/videoplayback.*[?&]ctier=L&.*%2Cctier%2C",
+      "googlevideo\\.com/videoplayback.*[?&]ctier=L",
+      "googlevideo\\.com/videoplayback/.*/ctier/L/"
+    ]
   },
   "groups": {
     "ads": [
@@ -49,5 +53,5 @@
       ".ytp-upnext"
     ]
   },
-  "version": 2
+  "version": 3
 }
