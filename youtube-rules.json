@@ -1,12 +1,9 @@
 {
-  "blocks" : {
-    "adVideos" : [
-      "googlevideo\\.com/videoplayback.*[?&]ctier=L",
-      "googlevideo\\.com/videoplayback/.*/ctier/L/"
-    ]
+  "blocks": {
+    "adVideos": []
   },
-  "groups" : {
-    "ads" : [
+  "groups": {
+    "ads": [
       "ytm-companion-slot",
       "ytm-promoted-sparkles-web-renderer",
       "ytm-promoted-video-renderer",
@@ -22,7 +19,7 @@
       ".ytp-ad-overlay-slot",
       "ytm-mealbar-promo-renderer"
     ],
-    "shorts" : [
+    "shorts": [
       "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.pivot-shorts)",
       "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.shorts)",
       "ytm-reel-shelf-renderer",
@@ -35,7 +32,11 @@
       "ytm-video-with-context-renderer:has(a[href^=\"/shorts/\"])",
       "yt-tab-shape[tab-title=\"Shorts\"]"
     ],
-    "suggestions" : [
+    "suggestions": [
+      "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.pivot-w2w)",
+      "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.pivot-home)",
+      "ytm-pivot-bar-item-renderer:has(> div.pivot-bar-item-tab.home)",
+      "ytm-pivot-bar-item-renderer:first-of-type:not(:only-of-type)",
       "ytm-rich-grid-renderer:has(> div > div.rich-grid-renderer-header > ytm-feed-filter-chip-bar-renderer) > div.rich-grid-renderer-contents",
       "ytm-rich-grid-renderer > div > div.rich-grid-renderer-header > ytm-feed-filter-chip-bar-renderer",
       "ytm-single-column-watch-next-results-renderer div.related-items-container",
@@ -48,5 +49,5 @@
       ".ytp-upnext"
     ]
   },
-  "version" : 1
+  "version": 2
 }
