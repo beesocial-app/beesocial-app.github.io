@@ -49,13 +49,5 @@
       ".ytp-upnext"
     ]
   },
-  "siteBlocks": {
-    "*instagram.com": [
-      "fbcdn\\.net/o1/v/",
-      "cdninstagram\\.com/o1/v/",
-      "fbcdn\\.net/v/t45\\.1600-4/",
-      "cdninstagram\\.com/v/t45\\.1600-4/"
-    ]
-  },
-  "version": 5
+  "version": 6
 }
