@@ -1,10 +1,19 @@
 {
   "blocks": {
     "ads": [
-      "^https://[^/]*instagram\\.com/api/v[0-9]+/injected_story_units"
+      "[?&]efg=[^&]*UEFHRV9JTlNUQUdSQU1fTV9TSVRFX1NUT1JZ",
+      "[?&]efg=[^&]*BBR0VfSU5TVEFHUkFNX01fU0lURV9TVE9SW[Q-Za-f]",
+      "[?&]efg=[^&]*QQUdFX0lOU1RBR1JBTV9NX1NJVEVfU1RPUl[k-n]"
     ]
   },
   "groups": {
+    "adLinks": [
+      "a[href*=\"/ads/ig_redirect\"]",
+      "div:has(> div > span[dir=\"auto\"] > a[href*=\"/help/396404120401278\"])",
+      "div:has(> div:nth-child(3) > div > div > div > div > div > div > a[href*=\"/ads/ig_redirect\"]) > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(1)",
+      "div:has(> div:nth-child(3) > div > div > div > div > div > div > a[href*=\"/ads/ig_redirect\"]) > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1) > div > div:nth-child(2) > div:nth-child(1)",
+      "div:has(> div:nth-child(3) > div > div > div > div > div > div > a[href*=\"/ads/ig_redirect\"]) > div:nth-child(2) > div > div:nth-child(1)"
+    ],
     "ads": [
       "article:has(a[href*=\"/ads/ig_redirect\"])"
     ],
@@ -57,8 +66,11 @@
       "[?&]efg=[^&]*idmVuY29kZV90YWciOiJ4cHZfcHJvZ3Jlc3NpdmUuSU5TVEFHUkFNLkFEL[g-v]",
       "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiQU[Q-T]",
       "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6IkFE",
-      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJBR[A-P]"
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJBR[A-P]",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiYWRzX2ltYWdlL[g-v]",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6ImFkc19pbWFnZS[4-7]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu"
     ]
   },
-  "version": 12
+  "version": 16
 }
