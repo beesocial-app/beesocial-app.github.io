@@ -32,7 +32,7 @@
       "main[role=\"main\"] > div > div > div:has(> div > div > div > div > article)"
     ],
     "mediaHolders": [
-      "main[role=\"main\"] > div:not([class])"
+      "main[role=\"main\"] > div[class] ~ div:not([class])"
     ],
     "photoMenu": [
       "div._aagu > div:not(._aagv)"
@@ -42,7 +42,10 @@
       "div:has(> span > div > a[href=\"/reels/\"])"
     ],
     "searchBar": [
-      "div:has(> div > section > main[role=\"main\"] > nav input[type=\"search\"]):has(> div > section > main[role=\"main\"] > nav a[href^=\"/\"]) > div:not(:has(section))"
+      "div:has(> div > section > main[role=\"main\"] > nav input[type=\"search\"]):has(> div > section > main[role=\"main\"] > nav a[href^=\"/\"]) > div:not(:has(section))",
+      "div:has(> div > section > main[role=\"main\"] > div:not([class]) textarea) > div:not(:has(section))",
+      "section:has(> main[role=\"main\"] > div:not([class]) textarea):has(> main[role=\"main\"] > div:not([class]) [data-visualcompletion=\"loading-state\"][role=\"status\"])",
+      "section:has(> div > main[role=\"main\"] > div:not([class]):first-child > div:not([class]):only-child:empty)"
     ],
     "suggestedHeading": [
       "div:has(> div > div > img[src*=\"illo-confirm-refresh\"]) + div"
@@ -72,5 +75,5 @@
       "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu"
     ]
   },
-  "version": 16
+  "version": 17
 }
