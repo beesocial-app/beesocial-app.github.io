@@ -59,6 +59,25 @@
       "div:has(> div[data-reel-type=\"reshared\"]) + div"
     ]
   },
+  "reelsPageBlocks": {
+    "suggestedReels": [
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoieHB2X3Byb2dyZXNzaXZlL[g-v]",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6Inhwdl9wcm9ncmVzc2l2ZS[4-7]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJ4cHZfcHJvZ3Jlc3NpdmUu",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiaWcteHB2ZHMu",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6ImlnLXhwdmRzL[g-v]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJpZy14cHZkcy[4-7]",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiQ0xJUFMu",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6IkNMSVBTL[g-v]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJDTElQUy[4-7]",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiQUQu",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6IkFEL[g-v]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJBRC[4-7]",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiYWRzX2ltYWdlL[g-v]",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6ImFkc19pbWFnZS[4-7]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu"
+    ]
+  },
   "storyBlocks": {
     "ads": [
       "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiaWcteHB2ZHMuYW[Q-T]",
@@ -75,5 +94,5 @@
       "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu"
     ]
   },
-  "version": 18
+  "version": 19
 }
