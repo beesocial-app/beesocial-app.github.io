@@ -75,7 +75,10 @@
       "[?&]efg=[^&]*idmVuY29kZV90YWciOiJBRC[4-7]",
       "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiYWRzX2ltYWdlL[g-v]",
       "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6ImFkc19pbWFnZS[4-7]",
-      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu"
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoidy5hZHNfaW1hZ2Uu",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6IncuYWRzX2ltYWdlL[g-v]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJ3LmFkc19pbWFnZS[4-7]"
     ]
   },
   "storyBlocks": {
@@ -91,8 +94,11 @@
       "[?&]efg=[^&]*idmVuY29kZV90YWciOiJBR[A-P]",
       "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoiYWRzX2ltYWdlL[g-v]",
       "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6ImFkc19pbWFnZS[4-7]",
-      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu"
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJhZHNfaW1hZ2Uu",
+      "[?&]efg=[^&]*InZlbmNvZGVfdGFnIjoidy5hZHNfaW1hZ2Uu",
+      "[?&]efg=[^&]*J2ZW5jb2RlX3RhZyI6IncuYWRzX2ltYWdlL[g-v]",
+      "[?&]efg=[^&]*idmVuY29kZV90YWciOiJ3LmFkc19pbWFnZS[4-7]"
     ]
   },
-  "version": 19
+  "version": 20
 }
