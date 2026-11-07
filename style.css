@@ -1,118 +1,395 @@
-@font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-Regular.ttf"); font-style: normal; }
-@font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-Italic.ttf"); font-style: italic; }
+/* Tweak's website. Black ink on white with the logo's pink, and very large type.
+   Written for a phone first; the wider layouts come after. Everything that moves
+   is in the last part of this file, and none of it runs for anyone who has asked
+   their device to reduce motion. */
+
+@font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-Regular.ttf") format("truetype");
+  font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "Instrument Serif"; src: url("fonts/InstrumentSerif-Italic.ttf") format("truetype");
+  font-style: italic; font-weight: 400; font-display: swap; }
 
 :root {
-  --paper: #F6F4EF; --card: #FFFEFB; --ink: #1C1B19; --ink-soft: #55524B; --muted: #8A867D;
-  --line: #D6D1C6; --honey: #F2A93B; --mark: #F7C873; --pale: #FDF1D6; --pale-line: #F0D9A8;
+  --ink: #111111; --pink: #F23DFF; --soft: #4B4944; --muted: #76736C; --line: #E4E2DB;
+  --pad: clamp(22px, 6vw, 72px);
+  --serif: "Instrument Serif", "Iowan Old Style", Georgia, "Times New Roman", serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --out: cubic-bezier(0.16, 1, 0.3, 1);      /* quick start, long soft landing */
+  --draw: cubic-bezier(0.65, 0, 0.35, 1);    /* a pen stroke */
 }
+
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--paper); color: var(--ink);
-  font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
-main { max-width: 640px; margin: 0 auto; padding: 56px 24px 80px; }
-h1, h2 { font-family: "Instrument Serif", Georgia, serif; font-weight: 400; line-height: 1.05; margin: 0 0 16px; }
-h1 { font-size: min(56px, 13vw); }
-h2 { font-size: 36px; margin-top: 48px; }
-p { color: var(--ink-soft); margin: 0 0 16px; }
-a { color: var(--ink); }
-.button { display: inline-block; background: var(--honey); color: var(--ink); text-decoration: none;
-  font-weight: 600; padding: 14px 26px; border-radius: 999px; margin: 8px 0 4px; }
-.button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
-button.button { border: 0; font: inherit; font-weight: 600; cursor: pointer; }
-.card { background: var(--pale); border: 1px solid var(--pale-line); border-radius: 20px; padding: 18px 20px; margin: 0 0 12px; }
-.card h3 { font-size: 17px; margin: 0 0 4px; }
-.card p { margin: 0; }
-.small { font-size: 14px; color: var(--muted); }
-footer { margin-top: 56px; font-size: 14px; color: var(--muted); }
+html { -webkit-text-size-adjust: 100%; color-scheme: light; }
+body { margin: 0; background: #fff; color: var(--ink); font: 400 18px/1.5 var(--sans);
+  -webkit-font-smoothing: antialiased; overflow-x: clip; }
+img { display: block; max-width: 100%; height: auto; }
+a { color: inherit; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+h1, h2 { font-family: var(--serif); font-weight: 400; margin: 0; letter-spacing: -0.02em; line-height: 0.94;
+  text-wrap: balance; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: var(--pad); }
+section { padding-block: clamp(76px, 13vw, 168px); }
 
-/* The honey highlighter behind the italic words. It is drawn as a background
-   image so it can sweep in from the left (see the motion section below). */
-h1 em, h2 em { --mark-h: 100%; display: inline-block; line-height: 0.9; padding: 0.06em 6px 0.02em;
-  font-style: italic; border-radius: 6px;
-  background: linear-gradient(var(--mark), var(--mark)) no-repeat 0 0 / 100% var(--mark-h);
+/* The top of the page: the logo, the one idea, what Tweak is, and the button. */
+.hero { min-height: 100vh; min-height: 100svh; display: flex;
+  padding-block: clamp(20px, 3.4vw, 40px) clamp(44px, 8vw, 96px); }
+.hero .wrap { width: 100%; display: flex; flex-direction: column; }
+.logo { display: inline-block; align-self: flex-start; }
+.logo img { width: clamp(160px, 44vw, 270px); }
+.hero-body { margin-block: auto; padding-top: clamp(28px, 6vw, 56px); }
+/* The line under the logo, in the headline's pink italic. */
+.kicker { font: italic 400 clamp(22px, 6.2vw, 32px)/1.1 var(--serif); letter-spacing: -0.01em; color: var(--pink);
+  margin: 2px 0 0 0.04em; }
+h1 { font-size: clamp(54px, 17.2vw, 82px); }
+/* The two sentences of the headline never share a line. */
+h1 .line { display: block; text-wrap: balance; }
+h1 em, .get h2 em { font-style: italic; color: var(--pink);
+  text-shadow: var(--sx, 0.032em) var(--sy, 0.032em) 0 var(--ink); }
+.lead { font-size: clamp(19px, 5vw, 24px); line-height: 1.38; max-width: 27em; margin-top: clamp(20px, 4vw, 36px); }
+.cta { margin-top: clamp(26px, 5vw, 40px); }
+.fine { font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 36em; margin-top: 20px; }
+
+/* Words in a headline each sit in a little window, so they can rise into it. The
+   window is padded so the italic's tails and the pink words' ink edge are never cut. */
+.w { display: inline-block; vertical-align: top; overflow: hidden;
+  padding: 0.08em 0.16em 0.22em; margin: -0.08em -0.16em -0.22em; }
+.w > span { display: inline-block; }
+
+/* The things Tweak takes out, struck through in pink where they are named. */
+.x { position: relative; display: inline-block; white-space: nowrap; text-decoration: none; }
+.x::after { content: ""; position: absolute; left: -0.08em; right: -0.08em; top: 56%; height: max(2px, 0.1em);
+  border-radius: 1em; background: var(--pink); transform-origin: left center; }
+
+/* The button: the logo's pink with an ink edge, standing on an ink lip. Pressing
+   it pushes the face down onto the lip. Only the face moves, so it stays smooth. */
+.button { position: relative; display: block; padding: 0 0 6px; border: 0; background: none; text-decoration: none;
+  font: inherit; color: var(--ink); border-radius: 20px; -webkit-tap-highlight-color: transparent; }
+.button::before { content: ""; position: absolute; inset: 14px 0 0; background: var(--ink); border-radius: 20px; }
+.button > span { position: relative; display: block; font: 700 clamp(19px, 5.2vw, 22px)/1 var(--sans);
+  text-align: center; padding: 21px 34px; background: var(--pink); border: 3px solid var(--ink); border-radius: 20px;
+  transition: transform 0.12s ease; }
+.button:active > span { transform: translateY(5px); }
+.button:focus-visible { outline: 3px solid var(--ink); outline-offset: 5px; }
+button.button { width: 100%; cursor: pointer; }
+@media (hover: hover) {
+  .button:hover > span { transform: translateY(-2px); }
+  .button:hover:active > span { transform: translateY(5px); }
+}
+
+/* The idea again, running across the page on the logo's pink. */
+.ticker { background: var(--pink); border-block: 3px solid var(--ink); overflow: hidden; padding-block: 0.5em 0.56em;
+  font: italic 400 clamp(30px, 8.6vw, 60px)/1 var(--serif); letter-spacing: -0.01em; white-space: nowrap; }
+.track { display: flex; align-items: center; width: max-content; }
+.track span { padding-inline: 0.42em; }
+.track i { flex: none; width: 0.42em; height: 0.42em; background: var(--ink);
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+
+/* Where it works. The two sites it works on today are set as large as the
+   headline, each marked with a sweep of pink. The ones planned are only drawn in
+   outline, because Tweak doesn't work on those yet. The names are in Tweak's own
+   type: the sites' logos can't be used without their permission. */
+.where .wrap { display: grid; gap: clamp(56px, 11vw, 96px); }
+.where .label { font-size: 15px; color: var(--ink); margin-bottom: 22px; }
+/* The two names are pink stickers in the button's style, each at a slight angle. */
+.now { list-style: none; margin: 0; padding: 0.06em 0.12em 0.14em 0.04em; display: flex; flex-direction: column;
+  align-items: flex-start; gap: 0.16em; font: 400 clamp(58px, 18.6vw, 150px)/1 var(--serif); letter-spacing: -0.025em; }
+.now li:nth-child(2) { margin-left: 0.28em; }
+.tag { display: inline-block; padding: 0.02em 0.22em 0.1em; color: var(--ink); background: var(--pink);
+  border: max(3px, 0.028em) solid var(--ink); border-radius: 0.24em; box-shadow: 0.07em 0.07em 0 var(--ink);
+  transform: rotate(var(--r)); }
+.now li:nth-child(1) .tag { --r: -2.4deg; }
+.now li:nth-child(2) .tag { --r: 1.8deg; }
+/* The planned names are only drawn in outline, because Tweak doesn't work on those yet. */
+.soon { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.04em 0.5em;
+  font: 400 clamp(50px, 15vw, 104px)/1.06 var(--serif); letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke-width: max(1.3px, 0.016em); -webkit-text-stroke-color: var(--ink); }
+.note { font-size: clamp(18px, 4.6vw, 21px); line-height: 1.45; color: var(--soft); max-width: 24em; margin-top: 24px; }
+.label { font: 700 13px/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--pink); margin: 0 0 16px; }
+@media (hover: hover) {
+  /* On a computer, a planned name fills in with pink under the pointer, a taste of what's coming. */
+  .soon li { transition: color 0.3s ease; }
+  .soon li:hover { color: var(--pink); }
+}
+
+/* What goes and what stays, in white on ink. The things you can take out are
+   struck through in pink; tapping one brings it back, as its switch does in the app. */
+.choose { background: var(--ink); color: #fff; }
+.choose h2 { font-size: clamp(40px, 11.4vw, 96px); max-width: 13em; }
+.choose .lead { color: #fff; }
+.lists { display: grid; gap: clamp(44px, 9vw, 80px); margin-top: clamp(56px, 10vw, 104px); }
+.words { list-style: none; margin: 0; padding: 0; font: 400 clamp(40px, 13vw, 88px)/1.04 var(--serif);
+  letter-spacing: -0.02em; white-space: nowrap; }
+.cut { all: unset; display: inline-flex; align-items: center; color: rgba(255, 255, 255, 0.5);
+  transition: color 0.35s ease; -webkit-tap-highlight-color: transparent; }
+.js .cut { cursor: pointer; }
+.cut .t { position: relative; }
+.cut .t::after { content: ""; position: absolute; left: -0.07em; right: -0.07em; top: 55%; height: 0.085em;
+  border-radius: 1em; background: var(--pink); transform-origin: left center;
+  transition: transform 0.5s var(--draw); }
+.cut[aria-pressed="false"] { color: #fff; }
+.cut[aria-pressed="false"] .t::after { transform: scaleX(0); }
+.cut:focus-visible { outline: 2px solid var(--pink); outline-offset: 6px; border-radius: 6px; }
+/* A switch beside each, like the one in the app: on while the thing is taken out. */
+.sw { flex: none; position: relative; width: 0.66em; height: 0.38em; margin: 0.05em 0.18em 0 0; border-radius: 1em;
+  border: max(2px, 0.028em) solid #fff; transition: border-color 0.35s ease, background-color 0.35s ease; }
+.sw::after { content: ""; position: absolute; top: 0.035em; left: 0.035em; width: 0.25em; height: 0.25em; border-radius: 50%;
+  background: #fff; transition: transform 0.35s var(--out), background-color 0.35s ease; }
+.cut[aria-pressed="true"] .sw { border-color: var(--pink); background: var(--pink); }
+.cut[aria-pressed="true"] .sw::after { transform: translateX(0.28em); background: var(--ink); }
+.hint { display: none; font-size: clamp(16px, 4.2vw, 18px); line-height: 1.45; color: rgba(255, 255, 255, 0.82); margin-top: 22px; }
+.js .hint { display: block; }
+
+/* How it works: three numbered panels, each a drawing and one line, the numbers big
+   and pink in the logo's style. The third holds the two screens. */
+.how h2 { font-size: clamp(52px, 15vw, 120px); }
+.how .lead { color: var(--soft); }
+.flow { list-style: none; margin: clamp(40px, 8vw, 72px) 0 0; padding: 0; display: grid; gap: clamp(52px, 10vw, 96px); }
+.panel { display: grid; grid-template-columns: auto 1fr; column-gap: clamp(14px, 3.6vw, 28px); row-gap: clamp(22px, 4.5vw, 36px);
+  align-items: start; }
+.n { font: 400 clamp(84px, 24vw, 140px)/0.8 var(--serif); color: var(--pink); text-shadow: 0.035em 0.035em 0 var(--ink); }
+.panel h3 { font: 400 clamp(28px, 7.6vw, 42px)/1.04 var(--serif); letter-spacing: -0.012em; margin: 0; text-wrap: balance; }
+.panel-text { padding-top: 0.1em; }
+.panel p { margin-top: 12px; font-size: clamp(17px, 4.4vw, 20px); line-height: 1.45; color: var(--soft); max-width: 26em; }
+.panel > .pic, .panel > .shots, .panel > .fine { grid-column: 1 / -1; }
+.pic { display: block; width: 100%; max-width: 400px; height: auto; }
+.pic .icon { fill: var(--line); }
+.pic .icon-new { fill: var(--pink); stroke: var(--ink); stroke-width: 2.5; }
+.pic .icon-label { font: 700 12px var(--sans); fill: var(--ink); }
+.pic .card { fill: #fff; stroke: var(--ink); stroke-width: 2; }
+.pic .dot, .pic .thumb { fill: var(--line); }
+.pic .namebar { fill: #B9B6AE; }
+.pic .capbar { fill: #DAD7CF; }
+.pic .ghost { fill: none; stroke: #B9B6AE; stroke-width: 2; stroke-dasharray: 6 5; }
+.pic .ghost-label { font: 700 14px var(--sans); fill: var(--muted); }
+.pic .sw-on { fill: var(--pink); stroke: var(--ink); stroke-width: 2; }
+.pic .sw-knob { fill: var(--ink); }
+.quick { margin-top: clamp(44px, 8vw, 72px); font: italic 400 clamp(24px, 6.4vw, 36px)/1.15 var(--serif); letter-spacing: -0.01em;
+  max-width: 20em; text-wrap: balance; }
+.how .fine { font-size: 15px; color: var(--muted); max-width: 36em; }
+
+/* Why it's the best: three plain reasons under a rule. */
+.best { margin-top: clamp(56px, 10vw, 96px); padding-top: clamp(32px, 6vw, 48px); border-top: 3px solid var(--ink); }
+.best h3 { font: 400 clamp(38px, 10vw, 68px)/0.98 var(--serif); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.best ul { list-style: none; margin: clamp(20px, 4vw, 32px) 0 0; padding: 0; display: grid; gap: 14px;
+  font-size: clamp(18px, 4.6vw, 21px); line-height: 1.45; color: var(--soft); max-width: 30em; }
+.best b { color: var(--ink); }
+
+/* The classic look: the app beside the site through Tweak, two screens drawn in
+   the site's own ink and pink. The clutter in the app is struck through in pink;
+   with Tweak the friends' posts simply lift into place. */
+.look { margin-top: clamp(48px, 9vw, 88px); }
+.look h3 { font: 400 clamp(38px, 10vw, 68px)/0.98 var(--serif); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.look > p { font-size: clamp(18px, 4.6vw, 21px); line-height: 1.45; max-width: 29em; margin-top: clamp(16px, 3vw, 22px); color: var(--soft); }
+.look > .fine { margin-top: 24px; font-size: 15px; color: var(--muted); }
+/* The captions sit above the screens and share a row, so the two screens line up. */
+.shots { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; column-gap: clamp(16px, 4vw, 48px);
+  row-gap: 14px; max-width: 720px; margin-top: clamp(28px, 6vw, 48px); }
+.shot { margin: 0; display: grid; grid-template-rows: subgrid; grid-row: span 2; }
+.shot figcaption { font-size: 15px; line-height: 1.4; color: var(--soft); }
+.shot figcaption b { display: block; font-size: 17px; color: var(--ink); margin-bottom: 2px; }
+.phone { display: block; width: 100%; height: auto; }
+.phone .white { fill: #fff; }
+.phone .ink, .phone .inkfill { fill: var(--ink); }
+.phone .frame { fill: none; stroke: var(--ink); stroke-width: 3; }
+.phone .hair { stroke: var(--line); stroke-width: 1.5; }
+.phone .line2 { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.phone .line2w { fill: none; stroke: #fff; stroke-width: 2.4; stroke-linecap: round; }
+.phone .tab { fill: none; stroke: var(--ink); stroke-width: 1.6; }
+.phone .ring { fill: none; stroke: var(--pink); stroke-width: 3; }
+.phone .ringme { fill: none; stroke: var(--line); stroke-width: 3; }
+.phone .face { fill: var(--line); }
+.phone .plus { fill: var(--ink); stroke: #fff; stroke-width: 3; }
+.phone .photo { fill: #EDEBE4; }
+.phone .sunp { fill: var(--pink); }
+.phone .hillp { fill: #fff; stroke: var(--ink); stroke-width: 2.4; stroke-linejoin: round; }
+.phone .shopp { fill: #fff; stroke: var(--ink); stroke-width: 2.4; }
+.phone .facep { fill: #fff; stroke: var(--ink); stroke-width: 2.4; }
+.phone .dots { stroke: var(--ink); stroke-width: 4; stroke-linecap: round; }
+.phone .btn { fill: var(--line); }
+.phone .pill { fill: #E6E4DD; }
+.phone .disc { fill: #fff; }
+.phone .namebar { fill: #B9B6AE; }
+.phone .arrow { fill: none; stroke: var(--pink); stroke-width: 4; stroke-linecap: round; }
+.phone .ahead { fill: var(--pink); }
+.phone .tag-bg { fill: var(--pink); }
+.phone text.tag { font: 700 20px var(--sans); fill: #fff; }
+.phone .capbar { fill: #DAD7CF; }
+.phone text { font: 400 15px var(--sans); fill: var(--ink); }
+.phone text.time { font: 700 17px var(--sans); }
+.phone text.name { font: 400 30px var(--serif); letter-spacing: -0.01em; }
+.phone text.small { font-size: 14px; fill: var(--muted); }
+.phone text.user { font-weight: 700; font-size: 15px; }
+.phone text.count { font-weight: 700; font-size: 15px; }
+.phone text.cap { font-size: 15px; }
+.phone text.huge { font: 800 46px var(--sans); fill: var(--ink); letter-spacing: 0.02em; }
+.phone text.btnw { font: 700 16px var(--sans); fill: #fff; }
+.phone text.btn { font: 700 14px var(--sans); fill: var(--ink); }
+.phone .zap { stroke: var(--pink); stroke-width: 4; stroke-linecap: round; transform-box: fill-box; transform-origin: left center; }
+.phone .feed { transform-box: fill-box; }
+
+/* The privacy promise, alone on the logo's pink. */
+.private { background: var(--pink); }
+.private h2 { font-size: clamp(42px, 11.8vw, 112px); max-width: 11.5em; line-height: 1.03; }
+.bar { color: #fff; padding-inline: 0.14em; margin-inline: -0.05em; border-radius: 0.05em;
+  background: linear-gradient(var(--ink), var(--ink)) no-repeat 0 62% / 100% 0.84em;
   -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.bar.short { white-space: nowrap; }
+.private p { font-size: clamp(18px, 4.6vw, 21px); line-height: 1.45; max-width: 31em; margin-top: clamp(26px, 5vw, 44px); }
 
-/* The bee hovering just after "should bee.", as on the app's home screen.
-   The space for it is reserved on the line, so the headline never shifts. */
-.bee-spot { position: relative; white-space: nowrap; padding-right: 1.5em; }
-.hero-bee { position: absolute; right: 0; bottom: 0.1em; width: 0.87em; height: 0.79em; overflow: visible; }
+/* The last thing on the page: the button again, and what "beta" means. */
+.get h2 { font-size: clamp(54px, 17.2vw, 82px); }
+/* For someone reading on a computer: a square to scan with the phone. Hidden on phones. */
+.scan { display: none; }
+.notes { margin-top: clamp(44px, 8vw, 72px); padding-top: 26px; border-top: 2px solid var(--ink);
+  display: grid; gap: 14px; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 46em; }
+.notes a { color: var(--ink); }
 
-/* Motion. Everything below is switched off for anyone who has asked their
-   device to reduce motion, which leaves the page exactly as it looks at rest. */
+footer { padding-block: 26px clamp(40px, 8vw, 64px); font-size: 14px; line-height: 1.5; color: var(--muted); }
+.ticker, main, footer { position: relative; z-index: 1; }
+main, footer { background: #fff; }
+footer .wrap > * { max-width: 46em; }
+footer nav { margin-bottom: 12px; font-size: 16px; }
+footer nav a { margin-right: 20px; color: var(--ink); }
+
+/* The privacy and support pages: the same ink and type at a reading width. */
+.page .wrap { max-width: calc(760px + 2 * var(--pad)); }
+.page .top { padding-top: clamp(20px, 3.4vw, 40px); }
+.page main { padding-block: clamp(44px, 9vw, 96px) clamp(48px, 9vw, 96px); }
+.page h1 { font-size: clamp(54px, 15vw, 112px); }
+.page h2 { font-size: clamp(32px, 8vw, 46px); line-height: 1; letter-spacing: -0.012em; margin-top: clamp(48px, 8vw, 68px); }
+.page h3 { font: 700 19px/1.3 var(--sans); margin: 28px 0 0; }
+.page main p { color: var(--soft); margin-top: 14px; }
+.page main p.lead { color: var(--ink); margin-top: clamp(20px, 4vw, 32px); }
+.page main p.date { font-size: 15px; color: var(--muted); margin-top: 18px; }
+.page main a { color: var(--ink); }
+.page .cta { max-width: 420px; }
+.page footer .wrap { border-top: 1px solid var(--line); padding-top: 22px; }
+
+/* Wider than a phone. */
+@media (min-width: 560px) {
+  .button { display: inline-block; min-width: 300px; }
+  button.button { width: auto; }
+}
+@media (min-width: 700px) {
+  h1, .get h2 { font-size: clamp(96px, min(11.4vw, 16vh), 168px); line-height: 0.92; }
+  .hero { padding-bottom: clamp(32px, 5vh, 72px); }
+  .hero-body { padding-top: clamp(20px, 4vh, 56px); }
+}
+@media (min-width: 860px) {
+  .where .wrap { grid-template-columns: 3fr 2fr; align-items: start; column-gap: clamp(40px, 5vw, 72px); }
+  .now { font-size: clamp(92px, 11vw, 150px); }
+  .soon { flex-direction: column; gap: 0.02em; font-size: clamp(60px, 5.8vw, 80px); }
+  .lists { grid-template-columns: 1fr 1fr; }
+  .words { font-size: clamp(60px, 6.6vw, 88px); }
+  .flow { grid-template-columns: 1fr 1fr; column-gap: clamp(40px, 5vw, 72px); }
+  .panel.wide { grid-column: 1 / -1; }
+  .n { font-size: clamp(120px, 11vw, 150px); }
+  .panel h3 { font-size: clamp(34px, 3.2vw, 44px); }
+  .best ul { grid-template-columns: repeat(3, 1fr); gap: 36px; max-width: none; }
+}
+@media (min-width: 860px) and (hover: hover) and (pointer: fine) {
+  .scan { display: flex; align-items: center; gap: 22px; margin-top: 40px; font-size: 17px; line-height: 1.45; color: var(--soft); }
+  .scan img { flex: none; width: 132px; height: 132px; padding: 5px; background: #fff; border: 3px solid var(--ink); border-radius: 16px; }
+  .scan p { max-width: 17em; }
+}
+
+/* ---------- Movement ----------
+   Two switches on <html> drive it. "go" is set by the page itself once the
+   typeface is ready, and starts the top of the page. "anim" is set by script.js,
+   which then marks each thing "in" as it scrolls into view; if that file never
+   arrives, nothing below the top is ever hidden. */
 @media (prefers-reduced-motion: no-preference) {
-  html { scroll-behavior: smooth; }
 
-  /* The bee bobs slowly up and down like the one in the app, and its wings flutter. */
-  .bee .bee-bob { animation: bee-bob 2.4s ease-in-out infinite alternate; }
-  .bee .wing { animation: wing-l 0.15s ease-in-out infinite alternate; }
-  .bee .wing-r { animation-name: wing-r; }
-  .hero-bee { cursor: pointer; -webkit-tap-highlight-color: transparent; }
-  .hero-bee.loop { animation: bee-loop 1.1s linear; }
+  /* The headline rises word by word, then the pink words, then the rest. */
+  .js .hero .w > span { transform: translateY(120%); }
+  .js.go .hero .w > span { transform: none; transition: transform 0.9s var(--out) calc(var(--i) * 60ms + 60ms); }
+  .js .hero .late { opacity: 0; transform: translateY(16px); }
+  .js.go .hero .late { opacity: 1; transform: none;
+    transition: opacity 0.7s ease var(--d), transform 0.8s var(--out) var(--d); }
+  /* Then the pink lines cross out what Tweak takes away. */
+  .js .hero .x::after { transform: scaleX(0); }
+  .js.go .hero .x::after { transform: none; transition: transform 0.45s var(--draw) var(--d); }
+  /* And the button dips once, as if pressed. */
+  .js.go .hero .button > span { animation: dip 0.6s ease 2.9s 1 both; }
 
-  /* The headline's highlighter sweeps in once the page has loaded. */
-  h1 em { animation: mark-sweep 0.8s cubic-bezier(.65, 0, .35, 1) 0.3s both; }
+  /* The top of the page stays where it is, sinking back a little, while the rest
+     slides up over it. script.js only pins it when the whole of it fits on screen. */
+  .pin .hero { position: sticky; top: 0; }
+  .pin .hero-body, .pin .logo { transform: translateY(calc(var(--cover, 0) * -46px)); opacity: calc(1 - var(--cover, 0) * 1.15); }
+  /* On a computer the pink words' ink edge leans away from the pointer. */
+  h1 em, .get h2 em { transition: text-shadow 0.25s ease-out; }
 
-  /* Further down, script.js adds .reveal to things below the fold and .shown
-     when they scroll into view: cards rise in and the highlighter sweeps in. */
-  .card.reveal { opacity: 0; transform: translateY(18px);
-    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(.2, .7, .2, 1); }
-  .card.reveal.shown { opacity: 1; transform: none; }
-  h2.reveal em { background-size: 0% var(--mark-h); transition: background-size 0.7s cubic-bezier(.65, 0, .35, 1) 0.1s; }
-  h2.reveal.shown em { background-size: 100% var(--mark-h); }
+  /* The ticker runs while it is on screen. Hovering or tapping it holds it still. */
+  .anim .ticker.run .track { animation: ticker 36s linear infinite; }
+  .ticker.held .track { animation-play-state: paused; }
 
-  /* The main button lifts and gives a little wiggle on hover. */
-  .button { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-  .button:active { transform: scale(0.97); }
+  /* Headlines further down rise the same way when you reach them. */
+  .anim [data-rise] .w > span { transform: translateY(120%); }
+  .anim [data-rise].in .w > span { transform: none; transition: transform 0.9s var(--out) calc(var(--i) * 55ms); }
+
+  /* The two stickers are stamped onto the page one after the other: each lands
+     from above, a little too big, and settles. The list itself doesn't lift. */
+  .anim .now[data-in] { opacity: 1; transform: none; }
+  .anim .now .tag { opacity: 0; transform: rotate(var(--r)) scale(1.6); }
+  .anim .now.in .tag { opacity: 1; transform: rotate(var(--r)) scale(1);
+    transition: transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) calc(var(--i) * 0.4s + 0.1s), opacity 0.2s ease calc(var(--i) * 0.4s + 0.1s); }
+
+  /* Everything else lifts in gently, one after another where there are several. */
+  .anim [data-in] { opacity: 0; transform: translateY(22px); }
+  .anim [data-in].in { opacity: 1; transform: none;
+    transition: opacity 0.7s ease calc(var(--i, 0) * 110ms), transform 0.9s var(--out) calc(var(--i, 0) * 110ms); }
+
+  /* The statement on ink lights up word by word as you scroll through it (script.js). */
+  .anim [data-reveal] .rw { opacity: 0.2; transition: opacity 0.25s linear; }
+
+  /* Nothing is struck until the list is in view; then each switch flips and its
+     line draws, one after another. */
+  .anim .choose:not(.struck) .cut { color: #fff; }
+  .anim .choose:not(.struck) .cut .t::after { transform: scaleX(0); }
+  .anim .choose:not(.struck) .cut .sw { border-color: #fff; background: transparent; }
+  .anim .choose:not(.struck) .cut .sw::after { transform: none; background: #fff; }
+  .words li:nth-child(2) :is(.cut, .cut .t::after, .sw, .sw::after) { transition-delay: 0.2s; }
+  .words li:nth-child(3) :is(.cut, .cut .t::after, .sw, .sw::after) { transition-delay: 0.4s; }
+  .words li:nth-child(4) :is(.cut, .cut .t::after, .sw, .sw::after) { transition-delay: 0.6s; }
+  .words li:nth-child(5) :is(.cut, .cut .t::after, .sw, .sw::after) { transition-delay: 0.8s; }
+  .choose.settled .words li :is(.cut, .cut .t::after, .sw, .sw::after) { transition-delay: 0s; }
+
+  /* On the pink, an ink bar sweeps across each thing Tweak never sees. */
+  .anim .promise .bar { background-size: 0% 0.84em; color: var(--ink); }
+  .anim .promise.in .bar { background-size: 100% 0.84em; color: #fff;
+    transition: background-size 0.6s var(--draw) calc(var(--i) * 0.3s + 0.75s), color 0.3s linear calc(var(--i) * 0.3s + 0.9s); }
+
+  /* In the drawings, each feed lifts into place, and then the pink crosses out
+     what the app slips in: the sponsored post, then the Reels tab. */
+  .anim .shot .feed { opacity: 0; transform: translateY(14px); }
+  .anim .shot.in .feed { opacity: 1; transform: none; transition: opacity 0.5s ease 0.45s, transform 0.8s var(--out) 0.45s; }
+  .anim .shot .callout { opacity: 0; }
+  .anim .shot.in .callout { opacity: 1; transition: opacity 0.4s ease calc(var(--k) * 0.35s + 1.3s); }
+
+  /* Each panel's number starts flat and grows its ink edge, like the logo's. */
+  .anim .panel .n { text-shadow: 0 0 0 var(--ink); transition: text-shadow 0.5s var(--out) 0.45s; }
+  .anim .panel.in .n { text-shadow: 0.035em 0.035em 0 var(--ink); }
+
+  /* The last button dips a few times to ask for a press. */
+  .anim .get .in .button > span { animation: press 3.2s ease 1.2s 3 both; }
+  .button:hover > span, .button:active > span { animation: none !important; }
 }
-@media (prefers-reduced-motion: no-preference) and (hover: hover) {
-  .button:hover { transform: translateY(-2px); box-shadow: 0 6px 16px -8px rgba(28, 27, 25, 0.45);
-    animation: wiggle 0.5s ease-in-out; }
-  .button:hover:active { transform: scale(0.97); }
+
+@keyframes ticker { to { transform: translateX(-50%); } }
+@keyframes dip {
+  0%, 100% { transform: none; }
+  30% { transform: translateY(5px); }
+  65% { transform: translateY(-2px); }
+}
+@keyframes press {
+  0%, 100% { transform: none; }
+  7% { transform: translateY(5px); }
+  16% { transform: translateY(-2px); }
+  24% { transform: none; }
 }
 
-@keyframes bee-bob { from { transform: translateY(4px) rotate(2deg); } to { transform: translateY(-6px) rotate(-3deg); } }
-@keyframes wing-l { to { transform: rotate(-10deg); } }
-@keyframes wing-r { to { transform: rotate(10deg); } }
-@keyframes mark-sweep { from { background-size: 0% var(--mark-h); } }
-@keyframes dot-fade { from { opacity: 0.9; } to { opacity: 0; } }
-@keyframes wiggle {
-  0%, 100% { transform: translateY(-2px) rotate(0); }
-  25% { transform: translateY(-2px) rotate(-3deg); }
-  50% { transform: translateY(-2px) rotate(2.5deg); }
-  75% { transform: translateY(-2px) rotate(-1.5deg); }
-}
-/* A loop-the-loop: the bee faces left, so it climbs to the left and comes round. */
-@keyframes bee-loop {
-  0%    { transform: none; }
-  12.5% { transform: translate(-0.21em, -0.09em) rotate(45deg); }
-  25%   { transform: translate(-0.3em, -0.3em) rotate(90deg); }
-  37.5% { transform: translate(-0.21em, -0.51em) rotate(135deg); }
-  50%   { transform: translate(0, -0.6em) rotate(180deg); }
-  62.5% { transform: translate(0.21em, -0.51em) rotate(225deg); }
-  75%   { transform: translate(0.3em, -0.3em) rotate(270deg); }
-  87.5% { transform: translate(0.21em, -0.09em) rotate(315deg); }
-  100%  { transform: translate(0, 0) rotate(360deg); }
-}
-
-/* The bee that follows you down the page (companion.js). It is a copy of the
-   headline bee, which hides while its double is out flying. */
-.hero-bee.away { visibility: hidden; }
-.companion { position: fixed; top: 0; left: 0; z-index: 20; display: none; pointer-events: none;
-  transform-origin: 50% 50%; will-change: transform; }
-.companion.on { display: block; }
-.companion-turn { width: 100%; height: 100%; }
-.companion svg { display: block; width: 100%; height: 100%; overflow: visible; }
-.trail-layer { position: absolute; top: 0; left: 0; width: 100%; height: 0; z-index: 19; pointer-events: none; }
-.bee-dot { position: absolute; width: 4px; height: 4px; margin: -2px 0 0 -2px; border-radius: 50%;
-  background: var(--honey); animation: dot-fade 3s ease-in forwards; }
 @media (prefers-reduced-motion: reduce) {
-  .companion.on, .trail-layer { display: none; }
-  .hero-bee.away { visibility: visible; }
+  .button > span, .cut, .cut .t::after, .sw, .sw::after { transition: none; }
 }
-
-/* Printing shows the page at rest: everything visible, no flying bee. */
 @media print {
-  .reveal { opacity: 1 !important; transform: none !important; }
-  .reveal em { background-size: 100% var(--mark-h) !important; }
-  .companion, .trail-layer { display: none !important; }
-  .hero-bee.away { visibility: visible !important; }
+  .ticker, .hint { display: none !important; }
 }
