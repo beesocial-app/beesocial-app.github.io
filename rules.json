@@ -23,7 +23,9 @@
       "div:has(> div > div > div > div > div > img[src*=\"illo-confirm-refresh\"]) ~ img"
     ],
     "appBanner": [
-      "section > div > div[data-visualcompletion=\"ignore\"]"
+      "section > div > div[data-visualcompletion=\"ignore\"]",
+      "main[role=\"main\"] > article div:has(> h1) + div:has(+ div > button ~ button)",
+      "a[href^=\"https://applink.instagram.com/\"]"
     ],
     "exploreGrid": [
       "main[role=\"main\"] > nav:has(input[type=\"search\"]) + div"
@@ -45,7 +47,12 @@
       "div:has(> div > section > main[role=\"main\"] > nav input[type=\"search\"]):has(> div > section > main[role=\"main\"] > nav a[href^=\"/\"]) > div:not(:has(section))",
       "div:has(> div > section > main[role=\"main\"] > div:not([class]) textarea) > div:not(:has(section))",
       "section:has(> nav h1:not([tabindex])):has(> main[role=\"main\"] > div:not([class]):first-child [data-visualcompletion=\"loading-state\"][role=\"status\"])",
-      "section:has(> nav h1:not([tabindex])):has(> div > main[role=\"main\"] > div:not([class]):first-child > div:not([class]):only-child:empty)"
+      "section:has(> nav h1:not([tabindex])):has(> div > main[role=\"main\"] > div:not([class]):first-child > div:not([class]):only-child:empty)",
+      "body:has(a[role=\"link\"] div[data-visualcompletion=\"ignore\"] > div:empty) section:has(> div > main[role=\"main\"] > nav h1):has(> div > main[role=\"main\"] > nav + div > div > [data-visualcompletion=\"loading-state\"][role=\"status\"])",
+      "section:has(> div > main[role=\"main\"] > nav h1:not([tabindex])):has(> div > main[role=\"main\"] > nav + div > div > [data-visualcompletion=\"loading-state\"][role=\"status\"])",
+      "head:not(:has(> meta[property=\"og:type\"][content=\"article\"])) + body section:has(> div > main[role=\"main\"] > nav h1:not([tabindex])):has(> div > main[role=\"main\"] > nav + div > div > article)",
+      "div[data-pagelet=\"IGDComposerForCannes\"]:not(:hover) div[role=\"textbox\"]:focus",
+      "div:has(> div[data-pagelet=\"IGDInboxHeaderOffMsys\"] h2:focus) div[data-pagelet=\"IGDMessagesList\"]"
     ],
     "suggestedHeading": [
       "div:has(> div > div > img[src*=\"illo-confirm-refresh\"]) + div"
@@ -100,5 +107,5 @@
       "[?&]efg=[^&]*idmVuY29kZV90YWciOiJ3LmFkc19pbWFnZS[4-7]"
     ]
   },
-  "version": 20
+  "version": 23
 }
