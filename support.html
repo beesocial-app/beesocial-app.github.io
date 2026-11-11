@@ -2,6 +2,8 @@
 <html lang="en-GB">
 <head>
   <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-jOXN07vuQ+nlAgK0E0amU4/Ye3BCnePrK/VxgwefzFU='; style-src 'self' 'unsafe-inline'; img-src 'self'; font-src 'self'; manifest-src 'self'; base-uri 'none'; form-action 'none'">
+  <meta name="referrer" content="no-referrer">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Tweak: Support</title>
   <meta name="description" content="Share Tweak, send feedback or report a problem.">
@@ -46,7 +48,7 @@
 <script>
   // Opens the share sheet where there is one, otherwise copies the address.
   document.getElementById("share").addEventListener("click", function () {
-    var url = "https://beesocial-app.github.io/", b = this;
+    var url = "https://tweaksocialmedia.co.uk/", b = this;
     if (navigator.share) { navigator.share({ title: "Tweak", url: url }).catch(function () {}); return; }
     navigator.clipboard.writeText(url).then(function () { b.firstElementChild.textContent = "Link copied"; });
   });
